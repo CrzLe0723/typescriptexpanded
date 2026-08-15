@@ -160,6 +160,9 @@ namespace TypeScriptExpanded {
      * @returns True if the string starts with the other string; otherwise false
      * 
      * @since 0.1
+     * 
+     * @see stringEndsWith
+     * @see stringIncludes
      */
     //% blockId=typeScriptExpandedStringStartsWith
     //% block="%text starts with %search"
@@ -178,6 +181,8 @@ namespace TypeScriptExpanded {
      * @returns True if the string ends with other string; otherwise false
      * 
      * @since 0.1
+     * @see stringStartsWith
+     * @see stringIncludes
      */
     //% blockId=typeScriptExpandedStringEndsWith
     //% block="%text ends with %search"
@@ -208,6 +213,9 @@ namespace TypeScriptExpanded {
      * @returns True if the string includes other string; otherwise false
      * 
      * @since 0.1
+     * 
+     * @see stringStartsWith
+     * @see stringEndsWith
      */
     //% blockId=typeScriptExpandedStringIncludes
     //% block="%text includes %search"
@@ -255,6 +263,9 @@ namespace TypeScriptExpanded {
      * @returns True if the number is finite; otherwise, false.
      * 
      * @since 0.1
+     * 
+     * @see negativeInfinity
+     * @see positiveInfinity
      */
     //% blockId=typeScriptExpandedIsFinite
     //% block="is finite %value"
@@ -268,6 +279,9 @@ namespace TypeScriptExpanded {
      * @returns The positive infinity value.
      * 
      * @since 0.1
+     * 
+     * @see negativeInfinity
+     * @see isFinite
      */
     //% blockId=typeScriptExpandedInfinity
     //% block="infinity"
@@ -281,6 +295,9 @@ namespace TypeScriptExpanded {
      * @returns The negative infinity value.
      * 
      * @since 0.1
+     * 
+     * @see positiveInfinity
+     * @see isFinite
      */
     //% blockId=typeScriptExpandedNegativeInfinity
     //% block="negative infinity"
@@ -296,6 +313,7 @@ namespace TypeScriptExpanded {
      * @returns True if the value is an integer; otherwise, false.
      * 
      * @since 0.1
+     * @see isFloat
      */
     //% blockId=typeScriptExpandedIsInteger
     //% block="is integer %value"
@@ -310,6 +328,7 @@ namespace TypeScriptExpanded {
      * @returns True if the number has a fractional part; otherwise, false.
      * 
      * @since 0.1
+     * @see isInteger
      */
     //% blockId=typeScriptExpandedIsFloat
     //% block="is float %value"
@@ -461,6 +480,8 @@ namespace TypeScriptExpanded {
      * @param number the number to set the value
      * 
      * @since 0.1
+     * 
+     * @see getunknownNumber
      */
     //% blockId=typeScriptExpandedsetUnknownNumber
     //% block="set unknown %value to number %number"
@@ -478,6 +499,8 @@ namespace TypeScriptExpanded {
      * @param string the string to set the value
      * 
      * @since 0.1
+     * 
+     * @see getunknownString
      */
     //% blockId=typeScriptExpandedsetUnknownString
     //% block="set unknown %value to string %string"
@@ -495,6 +518,7 @@ namespace TypeScriptExpanded {
      * @param boolean the boolean to set the value
      * 
      * @since 0.1
+     * @see getunknownBoolean
      */
     //% blockId=typeScriptExpandedsetUnknownBoolean
     //% block="set unknown %value to boolean %boolean"
@@ -524,6 +548,10 @@ namespace TypeScriptExpanded {
      * @returns True if the unknown value is a number; otherwise false
      * 
      * @since 0.1
+     * 
+     * @see unknownIsString
+     * @see unknownIsBoolean
+     * @see unknownIsEmpty
      */
     //% blockId=typeScriptExpandedunknownIsNumber
     //% block="%value is a number"
@@ -537,6 +565,10 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a string; otherwise, false.
      * 
      * @since 0.1
+     * 
+     * @see unknownIsNumber 
+     * @see unknownIsBoolean
+     * @see unknownIsEmpty
      */
     //% blockId=typeScriptExpandedunknownIsString
     //% block="%value is a string"
@@ -550,6 +582,10 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a boolean; otherwise, false.
      * 
      * @since 0.1
+     * 
+     * @see unknownIsNumber
+     * @see unknownIsString
+     * @see unknownIsEmpty
      */
     //% blockId=typeScriptExpandedunknownIsBoolean
     //% block="%value is a boolean"
@@ -563,6 +599,9 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a empty; otherwise, false.
      * 
      * @since 0.1
+     * @see unknownIsNumber
+     * @see unknownIsString
+     * @see unknownIsBoolean
      */
     //% blockId=typeScriptExpandedunknownIsEmpty
     //% block="%value is empty"
@@ -576,6 +615,8 @@ namespace TypeScriptExpanded {
      * @returns returns the unknown variable's number value
      * 
      * @since 0.1
+     * 
+     * @see setUnknownNumber
      */
     //% blockId=typeScriptExpandedgetUnknownNumber
     //% block="get number from unknown %value"
@@ -589,6 +630,8 @@ namespace TypeScriptExpanded {
      * @returns returns the unknown variable's string value
      * 
      * @since 0.1
+     * 
+     * @see setUnknownString
      */
     //% blockId=typeScriptExpandedgetUnknownString
     //% block="get string from unknown %value"
@@ -602,6 +645,8 @@ namespace TypeScriptExpanded {
      * @returns returns the unknown variable's boolean value
      * 
      * @since 0.1
+     * 
+     * @see setUnknownBoolean
      */
     //% blockId=typeScriptExpandedgetUnknownBoolean
     //% block="get boolean from unknown %value"
