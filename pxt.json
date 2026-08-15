@@ -1,6 +1,6 @@
 {
     "name": "TypeScriptExpanded",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "TypeScriptExpanded adds extra JavaScript and TypeScript features, utilities, type checks, conversions, and APIs to MakeCode Arcade.",
     "dependencies": {
         "device": "*",
