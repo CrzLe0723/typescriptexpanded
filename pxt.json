@@ -11,6 +11,7 @@
         "main.ts",
         "README.md",
         "docs/optionalproperty.md",
+        "docs/testdoc.md",
         "LICENSE",
         "assets.json",
         "ts-extras-test.ts"
