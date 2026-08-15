@@ -3,6 +3,8 @@
  * including language features, type checks, string operations, conversions,
  * and other functionality not normally available in Blocks. It also provides
  * additional APIs that make JavaScript and TypeScript development easier.
+ * 
+ * @version 0.1
  */
 //% weight=100 color=#3178C6 icon=""
 namespace TypeScriptExpanded {
@@ -38,6 +40,8 @@ namespace TypeScriptExpanded {
      *
      * @example
      * let value = TypeScriptExpanded.nonNull(myValue)
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedNonNull
     //% block="non-null %value"
@@ -55,6 +59,8 @@ namespace TypeScriptExpanded {
      *
      * @example
      * let name = TypeScriptExpanded.nullish(playerName, "Unknown")
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedNullish
     //% block="%value ?? %fallback"
@@ -76,6 +82,8 @@ namespace TypeScriptExpanded {
      * @param object The object to access.
      * @param property The property name to access.
      * @returns The value of the property, or undefined if the object is null or undefined.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedOptionalProperty
     //% block="optional property %property of %object"
@@ -99,6 +107,8 @@ namespace TypeScriptExpanded {
      * 
      * @param value The value to check.
      * @returns True if the value is a sprite; otherwise false
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedIsSprite
     //% block="%value is a Sprite"
@@ -111,6 +121,8 @@ namespace TypeScriptExpanded {
      * Checks whether a value is an array.
      * @param value The value to check.
      * @returns True if the value is an array; false otherwise
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedIsArray
     //% block="%value is an array"
@@ -127,6 +139,8 @@ namespace TypeScriptExpanded {
      * @param array The array to search.
      * @param value The value to look for.
      * @returns True if the array contains the value.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedArrayIncludes
     //% block="%array includes %value"
@@ -144,6 +158,8 @@ namespace TypeScriptExpanded {
      * @param text The string to search.
      * @param search The text to look for at the beginning.
      * @returns True if the string starts with %text; otherwise false
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringStartsWith
     //% block="%text starts with %search"
@@ -160,6 +176,8 @@ namespace TypeScriptExpanded {
      * @param text The string to search.
      * @param search The text to look for at the end.
      * @returns True if the string ends with %text; otherwise false
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringEndsWith
     //% block="%text ends with %search"
@@ -188,6 +206,8 @@ namespace TypeScriptExpanded {
      * @param text The string to search.
      * @param search The text to look for.
      * @returns True if the string includes %text; otherwise false
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringIncludes
     //% block="%text includes %search"
@@ -204,6 +224,8 @@ namespace TypeScriptExpanded {
      * Converts a value to a string.
      * @param value The value to convert.
      * @returns returns the value as a string
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedString
     //% block="String(%value)"
@@ -216,6 +238,8 @@ namespace TypeScriptExpanded {
      * Converts a value to a boolean.
      * @param value The value to convert.
      * @returns returns the boolean value of the value inputted
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedBoolean
     //% block="Boolean(%value)"
@@ -229,6 +253,8 @@ namespace TypeScriptExpanded {
      *
      * @param value The number to check.
      * @returns True if the number is finite; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedIsFinite
     //% block="is finite %value"
@@ -240,6 +266,8 @@ namespace TypeScriptExpanded {
     /**
      * Represents an infinite value.
      * @returns The positive infinity value.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedInfinity
     //% block="infinity"
@@ -251,6 +279,8 @@ namespace TypeScriptExpanded {
     /**
      * Represents a negative infinite value.
      * @returns The negative infinity value.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedNegativeInfinity
     //% block="negative infinity"
@@ -264,6 +294,8 @@ namespace TypeScriptExpanded {
      *
      * @param value The number to check.
      * @returns True if the value is an integer; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedIsInteger
     //% block="is integer %value"
@@ -276,6 +308,8 @@ namespace TypeScriptExpanded {
      *
      * @param value The number to check.
      * @returns True if the number has a fractional part; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedIsFloat
     //% block="is float %value"
@@ -290,6 +324,8 @@ namespace TypeScriptExpanded {
      * @param text The string to repeat.
      * @param count The number of times to repeat the string.
      * @returns A new string containing the repeated text.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringRepeat
     //% block="%text repeat %count times"
@@ -313,6 +349,8 @@ namespace TypeScriptExpanded {
      * @param length The target length.
      * @param padding The text to use as padding.
      * @returns the string and the padding
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringPadStart
     //% block="%text pad start to %length with %padding"
@@ -341,6 +379,8 @@ namespace TypeScriptExpanded {
      * @param length The target length.
      * @param padding The text to use as padding.
      * @returns the string and the padding
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringPadEnd
     //% block="%text pad end to %length with %padding"
@@ -367,6 +407,8 @@ namespace TypeScriptExpanded {
      * Removes whitespace from the beginning of a string.
      * @param text The string to trim.
      * @returns the string without the whitespace at the beginning
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringTrimStart
     //% block="trim start of %text"
@@ -385,6 +427,8 @@ namespace TypeScriptExpanded {
      * Removes whitespace from the end of a string.
      * @param text The string to trim.
      * @returns the string without the whitespace at the end
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedStringTrimEnd
     //% block="trim end of %text"
@@ -402,6 +446,8 @@ namespace TypeScriptExpanded {
     /**
      * Create a unknown value 
      * @returns A new value with no assigned type
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedcreateUnknown
     //% block="create unknown value"
@@ -413,6 +459,8 @@ namespace TypeScriptExpanded {
      * set an unknown value to a number 
      * @param value the unknown value to set 
      * @param number the number to set the value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedsetUnknownNumber
     //% block="set unknown %value to number %number"
@@ -428,6 +476,8 @@ namespace TypeScriptExpanded {
      * set an unknown value to a string
      * @param value the unknown value to set
      * @param string the string to set the value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedsetUnknownString
     //% block="set unknown %value to string %string"
@@ -443,6 +493,8 @@ namespace TypeScriptExpanded {
      * set an unknown value to a boolean
      * @param value the unknown value to set
      * @param boolean the boolean to set the value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedsetUnknownBoolean
     //% block="set unknown %value to boolean %boolean"
@@ -457,6 +509,8 @@ namespace TypeScriptExpanded {
     /**
      * clear an unknown value
      * @param value the unknown value to clear
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedclearUnknown
     //% block="clear unknown %value"
@@ -468,6 +522,8 @@ namespace TypeScriptExpanded {
      * check if an unknown value is a number
      * @param value the value to check 
      * @returns True if the unknown value is a number; otherwise false
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedunknownIsNumber
     //% block="%value is a number"
@@ -479,6 +535,8 @@ namespace TypeScriptExpanded {
      * check if an unknown value is a string 
      * @param value the value to check 
      * @returns True if the value is a string; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedunknownIsString
     //% block="%value is a string"
@@ -490,6 +548,8 @@ namespace TypeScriptExpanded {
      * check if an unknown value is a boolean
      * @param value the value to check
      * @returns True if the value is a boolean; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedunknownIsBoolean
     //% block="%value is a boolean"
@@ -501,6 +561,8 @@ namespace TypeScriptExpanded {
      * check if an unknown value is a empty
      * @param value the value to check
      * @returns True if the value is a empty; otherwise, false.
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedunknownIsEmpty
     //% block="%value is empty"
@@ -512,6 +574,8 @@ namespace TypeScriptExpanded {
      * get an unknown variable's number value
      * @param value the value to get
      * @returns returns the unknown variable's number value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedgetUnknownNumber
     //% block="get number from unknown %value"
@@ -523,6 +587,8 @@ namespace TypeScriptExpanded {
      * get an unknown variable's string value
      * @param value the value to get
      * @returns returns the unknown variable's string value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedgetUnknownString
     //% block="get string from unknown %value"
@@ -534,6 +600,8 @@ namespace TypeScriptExpanded {
      * get an unknown variable's boolean value
      * @param value the value to get
      * @returns returns the unknown variable's boolean value
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedgetUnknownBoolean
     //% block="get boolean from unknown %value"
@@ -545,6 +613,8 @@ namespace TypeScriptExpanded {
      * get an unknown variable's type
      * @param value the value to check
      * @returns returns the unknown variable's type
+     * 
+     * @since 0.1
      */
     //% blockId=typeScriptExpandedunknownType
     //% block="unknown type of %value"
