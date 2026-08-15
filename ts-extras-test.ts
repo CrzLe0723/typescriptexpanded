@@ -89,6 +89,7 @@ namespace TypeScriptExpanded {
     //% property.shadow="text"
     //% property.defl=x
     //% group="TypeScript Operators"
+    //% help=github:Crzle0723/typescriptexpanded/optionalproperty
     export function optionalProperty(
         object: any,
         property: string
