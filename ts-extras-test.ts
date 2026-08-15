@@ -157,7 +157,7 @@ namespace TypeScriptExpanded {
      * Checks whether a string starts with the specified text.
      * @param text The string to search.
      * @param search The text to look for at the beginning.
-     * @returns True if the string starts with %text; otherwise false
+     * @returns True if the string starts with the other string; otherwise false
      * 
      * @since 0.1
      */
@@ -175,7 +175,7 @@ namespace TypeScriptExpanded {
      * Checks whether a string ends with the specified text.
      * @param text The string to search.
      * @param search The text to look for at the end.
-     * @returns True if the string ends with %text; otherwise false
+     * @returns True if the string ends with other string; otherwise false
      * 
      * @since 0.1
      */
@@ -205,7 +205,7 @@ namespace TypeScriptExpanded {
      * Checks whether a string contains the specified text.
      * @param text The string to search.
      * @param search The text to look for.
-     * @returns True if the string includes %text; otherwise false
+     * @returns True if the string includes other string; otherwise false
      * 
      * @since 0.1
      */
