@@ -74,7 +74,20 @@ namespace TypeScriptExpanded {
 
         return value
     }
-
+    /**
+     * Checks whether a value is null or undefined.
+     *
+     * @param value The value to check.
+     * @returns True if the value is null or undefined; otherwise, false.
+     *
+     * @since 0.2
+     */
+    //% blockId=typeScriptExpandedisNullish
+    //% block="is null or undefined %value"
+    //% group="TypeScript Operators"
+    export function isNullish(value: any): boolean {
+        return value === null || value === undefined
+    }
     /**
      * Safely gets a property from an object.
      *
