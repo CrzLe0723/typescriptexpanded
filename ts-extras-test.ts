@@ -9,7 +9,7 @@
 namespace TypeScriptExpanded {
 
     export enum UnknownKind {
-        None,
+        Empty,
         Number,
         String,
         Boolean
@@ -23,7 +23,7 @@ namespace TypeScriptExpanded {
         booleanValue: boolean
 
         constructor() {
-            this.kind = UnknownKind.None
+            this.kind = UnknownKind.Empty
             this.numberValue = 0
             this.stringValue = ""
             this.booleanValue = false
@@ -663,7 +663,7 @@ namespace TypeScriptExpanded {
     //% block="clear unknown %value"
     //% group="Unknown → Set"
     export function clearUnknown(value: UnknownValue): void {
-        value.kind = UnknownKind.None
+        value.kind = UnknownKind.Empty
     }
     /**
      * check if an unknown value is a number
@@ -730,7 +730,7 @@ namespace TypeScriptExpanded {
     //% block="%value is empty"
     //% group="Unknown → Type Checks"
     export function unknownIsEmpty(value: UnknownValue): boolean {
-        return value.kind == UnknownKind.None
+        return value.kind == UnknownKind.Empty
     }
     /**
      * get an unknown variable's number value
