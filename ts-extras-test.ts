@@ -124,6 +124,10 @@ namespace TypeScriptExpanded {
      * @since 0.0.1
      * 
      * @see isArray
+     * @see isBoolean
+     * @see isNumber
+     * @see NaN
+     * @see isString
      */
     //% blockId=typeScriptExpandedIsSprite
     //% block="%value is a Sprite"
@@ -139,7 +143,11 @@ namespace TypeScriptExpanded {
      * 
      * @since 0.0.1
      * 
+     * @see NaN
+     * @see isBoolean
+     * @see isNumber
      * @see isSprite
+     * @see isString
      */
     //% blockId=typeScriptExpandedIsArray
     //% block="%value is an array"
@@ -154,6 +162,11 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a string; otherwise, false.
      *
      * @since 0.0.2
+     * @see isArray
+     * @see isBoolean
+     * @see isNumber
+     * @see isSprite
+     * @see isNaN
      */
     //% blockId=typeScriptExpandedIsString
     //% block="%value is a string"
@@ -169,6 +182,12 @@ namespace TypeScriptExpanded {
     * @returns True if the value is a number; otherwise, false.
     *
     * @since 0.0.2
+    *
+    * @see isArray
+    * @see isBoolean
+    * @see NaN
+    * @see isSprite
+    * @see isString
     */
     //% blockId=typeScriptExpandedIsNumber
     //% block="%value is a number"
@@ -183,6 +202,12 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a boolean; otherwise, false.
      *
      * @since 0.0.2
+     * 
+     * @see isArray
+     * @see isNaN
+     * @see isNumber
+     * @see isSprite
+     * @see isString
      */
     //% blockId=typeScriptExpandedIsBoolean
     //% block="%value is a boolean"
@@ -190,6 +215,25 @@ namespace TypeScriptExpanded {
     export function isBoolean(value: any): boolean {
         return typeof value === "boolean"
     }
+
+    /**
+     * Checks whether a value is NaN (Not a Number)
+     * 
+     * @param value The value to check.
+     * @returns True if the value is NaN; otherwise, false.
+     * 
+     * @since 0.0.2
+     * 
+     * @see isArray
+     * @see isBoolean
+     * @see isNumber
+     * @see isSprite
+     * @see isString 
+     */
+    export function isNaN(value: any): boolean {
+        return Number.isNaN(value)
+    }
+
 
     /**
      * Checks whether an array contains a value.
@@ -331,23 +375,6 @@ namespace TypeScriptExpanded {
         return !!value
     }
 
-    /**
-     * Checks whether a number is finite.
-     *
-     * @param value The number to check.
-     * @returns True if the number is finite; otherwise, false.
-     * 
-     * @since 0.0.1
-     * 
-     * @see negativeInfinity
-     * @see positiveInfinity
-     */
-    //% blockId=typeScriptExpandedIsFinite
-    //% block="is finite %value"
-    //% group="Conversions & Numbers"
-    export function isFinite(value: number): boolean {
-        return value < Infinity && value > -Infinity
-    }
 
     /**
      * Represents an infinite value.
@@ -380,6 +407,26 @@ namespace TypeScriptExpanded {
     export function negativeInfinity(): number {
         return -Infinity
     }
+
+    /**
+     * Checks whether a number is finite.
+     *
+     * @param value The number to check.
+     * @returns True if the number is finite; otherwise, false.
+     * 
+     * @since 0.0.1
+     * 
+     * @see negativeInfinity
+     * @see positiveInfinity
+     */
+    //% blockId=typeScriptExpandedIsFinite
+    //% block="is finite %value"
+    //% group="Conversions & Numbers"
+    export function isFinite(value: number): boolean {
+        return value < Infinity && value > -Infinity
+    }
+
+
 
     /**
      * Checks whether a number is an integer.
