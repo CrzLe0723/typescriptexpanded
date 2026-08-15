@@ -44,6 +44,7 @@ namespace TypeScriptExpanded {
      */
     //% blockId=typeScriptExpandedNonNull
     //% block="non-null %value"
+    //% blockHidden=true
     //% group="TypeScript Operators"
     export function nonNull<T>(value: T): T {
         return value
@@ -398,7 +399,7 @@ namespace TypeScriptExpanded {
      * 
      * @since 0.0.1
      * 
-     * @see positiveInfinity
+     * @see infinity
      * @see isFinite
      */
     //% blockId=typeScriptExpandedNegativeInfinity
@@ -603,7 +604,7 @@ namespace TypeScriptExpanded {
      * 
      * @since 0.0.1
      * 
-     * @see getunknownNumber
+     * @see getUnknownNumber
      */
     //% blockId=typeScriptExpandedsetUnknownNumber
     //% block="set unknown %value to number %number"
@@ -622,7 +623,7 @@ namespace TypeScriptExpanded {
      * 
      * @since 0.0.1
      * 
-     * @see getunknownString
+     * @see getUnknownString
      */
     //% blockId=typeScriptExpandedsetUnknownString
     //% block="set unknown %value to string %string"
@@ -640,7 +641,7 @@ namespace TypeScriptExpanded {
      * @param boolean the boolean to set the value
      * 
      * @since 0.0.1
-     * @see getunknownBoolean
+     * @see getUnknownBoolean
      */
     //% blockId=typeScriptExpandedsetUnknownBoolean
     //% block="set unknown %value to boolean %boolean"
