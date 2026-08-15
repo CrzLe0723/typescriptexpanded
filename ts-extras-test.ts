@@ -46,6 +46,7 @@ namespace TypeScriptExpanded {
     //% block="non-null %value"
     //% blockHidden=true
     //% group="TypeScript Operators"
+    //% help=github:retro-fx/docs/create-menu
     export function nonNull<T>(value: T): T {
         return value
     }
