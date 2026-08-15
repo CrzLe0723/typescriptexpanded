@@ -109,6 +109,8 @@ namespace TypeScriptExpanded {
      * @returns True if the value is a sprite; otherwise false
      * 
      * @since 0.1
+     * 
+     * @see isArray
      */
     //% blockId=typeScriptExpandedIsSprite
     //% block="%value is a Sprite"
@@ -123,6 +125,8 @@ namespace TypeScriptExpanded {
      * @returns True if the value is an array; false otherwise
      * 
      * @since 0.1
+     * 
+     * @see isSprite
      */
     //% blockId=typeScriptExpandedIsArray
     //% block="%value is an array"
