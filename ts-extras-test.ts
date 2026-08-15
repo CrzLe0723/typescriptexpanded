@@ -44,6 +44,7 @@ namespace TypeScriptExpanded {
      */
     //% blockId=typeScriptExpandedNonNull
     //% block="non-null %value"
+    //% blockHidden=true
     //% group="TypeScript Operators"
     //% help=github:TypeScriptExpanded/docs/testdoc
     export function nonNull<T>(value: T): T {
@@ -88,6 +89,20 @@ namespace TypeScriptExpanded {
     //% group="TypeScript Operators"
     export function isNullish(value: any): boolean {
         return value === null || value === undefined
+    }
+    /**
+     * Checks whether a value is defined 
+     * 
+     * @param value The value to check.
+     * @returns True if the value is not undefined; otherwise, false.
+     * 
+     * @since 0.0.2
+     */
+    //% blockId=typeScriptExpandedisDefined
+    //% block="is defined %value"
+    //% group="TypeScript Operators"
+    export function isDefined(value: any): boolean {
+        return value !== undefined
     }
     /**
      * Safely gets a property from an object.
