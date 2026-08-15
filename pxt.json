@@ -1,6 +1,6 @@
 {
-    "name": "TypeScriptExtras TESTING EXTENSION",
-    "description": "",
+    "name": "TypeScriptExpanded",
+    "description": "TypeScriptExpanded adds extra JavaScript and TypeScript features, utilities, type checks, conversions, and APIs to MakeCode Arcade.",
     "dependencies": {
         "device": "*",
         "arcade-sprite-util": "github:jwunderl/arcade-sprite-util#v0.6.0"
@@ -9,6 +9,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
+        "LICENSE",
         "assets.json",
         "ts-extras-test.ts"
     ],
