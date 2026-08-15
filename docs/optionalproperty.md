@@ -21,5 +21,5 @@ let playerData = {
 let health = TypeScriptExpanded.optionalProperty(playerData, "health")
 ```
 ```package
-TypeScript Expanded=github:CrzLe0723/typescriptexpanded
+TypeScriptExpanded=github:CrzLe0723/typescriptexpanded
 ```
