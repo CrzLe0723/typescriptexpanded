@@ -1,0 +1,556 @@
+/**
+ * Adds additional JavaScript and TypeScript features to MakeCode Arcade,
+ * including language features, type checks, string operations, conversions,
+ * and other functionality not normally available in Blocks. It also provides
+ * additional APIs that make JavaScript and TypeScript development easier.
+ */
+//% weight=100 color=#3178C6 icon=""
+namespace TypeScriptExpanded {
+
+    export enum UnknownKind {
+        None,
+        Number,
+        String,
+        Boolean
+    }
+
+    export class UnknownValue {
+        kind: UnknownKind
+
+        numberValue: number
+        stringValue: string
+        booleanValue: boolean
+
+        constructor() {
+            this.kind = UnknownKind.None
+            this.numberValue = 0
+            this.stringValue = ""
+            this.booleanValue = false
+        }
+    }
+
+    /**
+     * Treats a value as non-null and non-undefined.
+     *
+     * @typeParam T The type of the value.
+     * @param value The value to treat as non-null.
+     * @returns The original value with its type preserved.
+     *
+     * @example
+     * let value = TypeScriptExpanded.nonNull(myValue)
+     */
+    //% blockId=typeScriptExpandedNonNull
+    //% block="non-null %value"
+    //% group="TypeScript Operators"
+    export function nonNull<T>(value: T): T {
+        return value
+    }
+
+    /**
+     * Returns a fallback value when the given value is null or undefined.
+     * @typeParam T The type of the value and fallback.
+     * @param value The value to check.
+     * @param fallback The value to return when the first value is null or undefined.
+     * @returns The original value if it is not null or undefined; otherwise, the fallback value.
+     *
+     * @example
+     * let name = TypeScriptExpanded.nullish(playerName, "Unknown")
+     */
+    //% blockId=typeScriptExpandedNullish
+    //% block="%value ?? %fallback"
+    //% group="TypeScript Operators"
+    export function nullish<T>(
+        value: T | null | undefined,
+        fallback: T
+    ): T {
+        if (value === null || value === undefined) {
+            return fallback
+        }
+
+        return value
+    }
+
+    /**
+     * Safely gets a property from an object.
+     *
+     * @param object The object to access.
+     * @param property The property name to access.
+     * @returns The value of the property, or undefined if the object is null or undefined.
+     */
+    //% blockId=typeScriptExpandedOptionalProperty
+    //% block="optional property %property of %object"
+    //% property.shadow="text"
+    //% property.defl=x
+    //% group="TypeScript Operators"
+    export function optionalProperty(
+        object: any,
+        property: string
+    ): any {
+        if (object === null || object === undefined) {
+            return undefined
+        }
+
+        return object[property]
+    }
+
+
+    /**
+     * Checks whether a value is a Sprite.
+     * 
+     * @param value The value to check.
+     * @returns True if the value is a sprite; otherwise false
+     */
+    //% blockId=typeScriptExpandedIsSprite
+    //% block="%value is a Sprite"
+    //% group="Type Checks"
+    export function isSprite(value: any): boolean {
+        return value instanceof Sprite
+    }
+
+    /**
+     * Checks whether a value is an array.
+     * @param value The value to check.
+     * @returns True if the value is an array; false otherwise
+     */
+    //% blockId=typeScriptExpandedIsArray
+    //% block="%value is an array"
+    //% group="Type Checks"
+    export function isArray(value: any): boolean {
+        return Array.isArray(value)
+    }
+
+
+    /**
+     * Checks whether an array contains a value.
+     *
+     * @typeParam T The type of the array elements.
+     * @param array The array to search.
+     * @param value The value to look for.
+     * @returns True if the array contains the value.
+     */
+    //% blockId=typeScriptExpandedArrayIncludes
+    //% block="%array includes %value"
+    //% group="Arrays"
+    export function arrayIncludes<T>(
+        array: T[],
+        value: T
+    ): boolean {
+        return array.indexOf(value) !== -1
+    }
+
+
+    /**
+     * Checks whether a string starts with the specified text.
+     * @param text The string to search.
+     * @param search The text to look for at the beginning.
+     * @returns True if the string starts with %text; otherwise false
+     */
+    //% blockId=typeScriptExpandedStringStartsWith
+    //% block="%text starts with %search"
+    //% group="Strings"
+    export function stringStartsWith(
+        text: string,
+        search: string
+    ): boolean {
+        return text.indexOf(search) === 0
+    }
+
+    /**
+     * Checks whether a string ends with the specified text.
+     * @param text The string to search.
+     * @param search The text to look for at the end.
+     * @returns True if the string ends with %text; otherwise false
+     */
+    //% blockId=typeScriptExpandedStringEndsWith
+    //% block="%text ends with %search"
+    //% group="Strings"
+    export function stringEndsWith(
+        text: string,
+        search: string
+    ): boolean {
+        if (search.length > text.length) {
+            return false
+        }
+
+        let start = text.length - search.length
+
+        for (let i = 0; i < search.length; i++) {
+            if (text.charAt(start + i) != search.charAt(i)) {
+                return false
+            }
+        }
+
+        return true
+    }
+
+    /**
+     * Checks whether a string contains the specified text.
+     * @param text The string to search.
+     * @param search The text to look for.
+     * @returns True if the string includes %text; otherwise false
+     */
+    //% blockId=typeScriptExpandedStringIncludes
+    //% block="%text includes %search"
+    //% group="Strings"
+    export function stringIncludes(
+        text: string,
+        search: string
+    ): boolean {
+        return text.indexOf(search) !== -1
+    }
+
+
+    /**
+     * Converts a value to a string.
+     * @param value The value to convert.
+     * @returns returns the value as a string
+     */
+    //% blockId=typeScriptExpandedString
+    //% block="String(%value)"
+    //% group="Conversions & Numbers"
+    export function toString(value: any): string {
+        return "" + value
+    }
+
+    /**
+     * Converts a value to a boolean.
+     * @param value The value to convert.
+     * @returns returns the boolean value of the value inputted
+     */
+    //% blockId=typeScriptExpandedBoolean
+    //% block="Boolean(%value)"
+    //% group="Conversions & Numbers"
+    export function toBoolean(value: any): boolean {
+        return !!value
+    }
+
+    /**
+     * Checks whether a number is finite.
+     *
+     * @param value The number to check.
+     * @returns True if the number is finite; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedIsFinite
+    //% block="is finite %value"
+    //% group="Conversions & Numbers"
+    export function isFinite(value: number): boolean {
+        return value < Infinity && value > -Infinity
+    }
+
+    /**
+     * Represents an infinite value.
+     * @returns The positive infinity value.
+     */
+    //% blockId=typeScriptExpandedInfinity
+    //% block="infinity"
+    //% group="Conversions & Numbers"
+    export function infinity(): number {
+        return Infinity
+    }
+
+    /**
+     * Represents a negative infinite value.
+     * @returns The negative infinity value.
+     */
+    //% blockId=typeScriptExpandedNegativeInfinity
+    //% block="negative infinity"
+    //% group="Conversions & Numbers"
+    export function negativeInfinity(): number {
+        return -Infinity
+    }
+
+    /**
+     * Checks whether a number is an integer.
+     *
+     * @param value The number to check.
+     * @returns True if the value is an integer; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedIsInteger
+    //% block="is integer %value"
+    //% group="Conversions & Numbers"
+    export function isInteger(value: number): boolean {
+        return value == Math.floor(value)
+    }
+    /**
+     * Checks whether a number has a fractional part.
+     *
+     * @param value The number to check.
+     * @returns True if the number has a fractional part; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedIsFloat
+    //% block="is float %value"
+    //% group="Conversions & Numbers"
+    export function isFloat(value: number): boolean {
+        return value != Math.floor(value)
+    }
+
+    /**
+     * Repeats a string a specified number of times.
+     *
+     * @param text The string to repeat.
+     * @param count The number of times to repeat the string.
+     * @returns A new string containing the repeated text.
+     */
+    //% blockId=typeScriptExpandedStringRepeat
+    //% block="%text repeat %count times"
+    //% group="Strings"
+    export function stringRepeat(
+        text: string,
+        count: number
+    ): string {
+        let result = ""
+
+        for (let i = 0; i < count; i++) {
+            result += text
+        }
+
+        return result
+    }
+
+    /**
+     * Adds padding to the beginning of a string until it reaches a specified length.
+     * @param text The string to pad.
+     * @param length The target length.
+     * @param padding The text to use as padding.
+     * @returns the string and the padding
+     */
+    //% blockId=typeScriptExpandedStringPadStart
+    //% block="%text pad start to %length with %padding"
+    //% group="Strings"
+    export function stringPadStart(
+        text: string,
+        length: number,
+        padding: string
+    ): string {
+        if (padding.length == 0 || text.length >= length) {
+            return text
+        }
+
+        let result = text
+
+        while (result.length < length) {
+            result = padding + result
+        }
+
+        return result.substr(result.length - length)
+    }
+
+    /**
+     * Adds padding to the end of a string until it reaches a specified length.
+     * @param text The string to pad.
+     * @param length The target length.
+     * @param padding The text to use as padding.
+     * @returns the string and the padding
+     */
+    //% blockId=typeScriptExpandedStringPadEnd
+    //% block="%text pad end to %length with %padding"
+    //% group="Strings"
+    export function stringPadEnd(
+        text: string,
+        length: number,
+        padding: string
+    ): string {
+        if (padding.length == 0 || text.length >= length) {
+            return text
+        }
+
+        let result = text
+
+        while (result.length < length) {
+            result += padding
+        }
+
+        return result.substr(0, length)
+    }
+
+    /**
+     * Removes whitespace from the beginning of a string.
+     * @param text The string to trim.
+     * @returns the string without the whitespace at the beginning
+     */
+    //% blockId=typeScriptExpandedStringTrimStart
+    //% block="trim start of %text"
+    //% group="Strings"
+    export function stringTrimStart(text: string): string {
+        let start = 0
+
+        while (start < text.length && " \t\r\n".indexOf(text.charAt(start)) >= 0) {
+            start++
+        }
+
+        return text.substr(start)
+    }
+
+    /**
+     * Removes whitespace from the end of a string.
+     * @param text The string to trim.
+     * @returns the string without the whitespace at the end
+     */
+    //% blockId=typeScriptExpandedStringTrimEnd
+    //% block="trim end of %text"
+    //% group="Strings"
+    export function stringTrimEnd(text: string): string {
+        let end = text.length
+
+        while (end > 0 && " \t\r\n".indexOf(text.charAt(end - 1)) >= 0) {
+            end--
+        }
+
+        return text.substr(0, end)
+    }
+
+    /**
+     * Create a unknown value 
+     * @returns A new value with no assigned type
+     */
+    //% blockId=typeScriptExpandedcreateUnknown
+    //% block="create unknown value"
+    //% group="Unknown → Create"
+    export function createUnknown(): UnknownValue {
+        return new UnknownValue()
+    }
+    /**
+     * set an unknown value to a number 
+     * @param value the unknown value to set 
+     * @param number the number to set the value
+     */
+    //% blockId=typeScriptExpandedsetUnknownNumber
+    //% block="set unknown %value to number %number"
+    //% group="Unknown → Set"
+    export function setUnknownNumber(
+        value: UnknownValue,
+        number: number
+    ): void {
+        value.kind = UnknownKind.Number
+        value.numberValue = number
+    }
+    /**
+     * set an unknown value to a string
+     * @param value the unknown value to set
+     * @param string the string to set the value
+     */
+    //% blockId=typeScriptExpandedsetUnknownString
+    //% block="set unknown %value to string %string"
+    //% group="Unknown → Set"
+    export function setUnknownString(
+        value: UnknownValue,
+        string: string
+    ): void {
+        value.kind = UnknownKind.String
+        value.stringValue = string
+    }
+    /**
+     * set an unknown value to a boolean
+     * @param value the unknown value to set
+     * @param boolean the boolean to set the value
+     */
+    //% blockId=typeScriptExpandedsetUnknownBoolean
+    //% block="set unknown %value to boolean %boolean"
+    //% group="Unknown → Set"
+    export function setUnknownBoolean(
+        value: UnknownValue,
+        boolean: boolean
+    ): void {
+        value.kind = UnknownKind.Boolean
+        value.booleanValue = boolean
+    }
+    /**
+     * clear an unknown value
+     * @param value the unknown value to clear
+     */
+    //% blockId=typeScriptExpandedclearUnknown
+    //% block="clear unknown %value"
+    //% group="Unknown → Set"
+    export function clearUnknown(value: UnknownValue): void {
+        value.kind = UnknownKind.None
+    }
+    /**
+     * check if an unknown value is a number
+     * @param value the value to check 
+     * @returns True if the unknown value is a number; otherwise false
+     */
+    //% blockId=typeScriptExpandedunknownIsNumber
+    //% block="%value is a number"
+    //% group="Unknown → Type Checks"
+    export function unknownIsNumber(value: UnknownValue): boolean {
+        return value.kind == UnknownKind.Number
+    }
+    /**
+     * check if an unknown value is a string 
+     * @param value the value to check 
+     * @returns True if the value is a string; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedunknownIsString
+    //% block="%value is a string"
+    //% group="Unknown → Type Checks"
+    export function unknownIsString(value: UnknownValue): boolean {
+        return value.kind == UnknownKind.String
+    }
+    /**
+     * check if an unknown value is a boolean
+     * @param value the value to check
+     * @returns True if the value is a boolean; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedunknownIsBoolean
+    //% block="%value is a boolean"
+    //% group="Unknown → Type Checks"
+    export function unknownIsBoolean(value: UnknownValue): boolean {
+        return value.kind == UnknownKind.Boolean
+    }
+    /**
+     * check if an unknown value is a empty
+     * @param value the value to check
+     * @returns True if the value is a empty; otherwise, false.
+     */
+    //% blockId=typeScriptExpandedunknownIsEmpty
+    //% block="%value is empty"
+    //% group="Unknown → Type Checks"
+    export function unknownIsEmpty(value: UnknownValue): boolean {
+        return value.kind == UnknownKind.None
+    }
+    /**
+     * get an unknown variable's number value
+     * @param value the value to get
+     * @returns returns the unknown variable's number value
+     */
+    //% blockId=typeScriptExpandedgetUnknownNumber
+    //% block="get number from unknown %value"
+    //% group="Unknown → Get"
+    export function getUnknownNumber(value: UnknownValue): number {
+        return value.numberValue
+    }
+    /**
+     * get an unknown variable's string value
+     * @param value the value to get
+     * @returns returns the unknown variable's string value
+     */
+    //% blockId=typeScriptExpandedgetUnknownString
+    //% block="get string from unknown %value"
+    //% group="Unknown → Get"
+    export function getUnknownString(value: UnknownValue): string {
+        return value.stringValue
+    }
+    /**
+     * get an unknown variable's boolean value
+     * @param value the value to get
+     * @returns returns the unknown variable's boolean value
+     */
+    //% blockId=typeScriptExpandedgetUnknownBoolean
+    //% block="get boolean from unknown %value"
+    //% group="Unknown → Get"
+    export function getUnknownBoolean(value: UnknownValue): boolean {
+        return value.booleanValue
+    }
+    /**
+     * get an unknown variable's type
+     * @param value the value to check
+     * @returns returns the unknown variable's type
+     */
+    //% blockId=typeScriptExpandedunknownType
+    //% block="unknown type of %value"
+    //% group="Unknown → Info"
+    export function unknownType(value: UnknownValue): UnknownKind {
+        return value.kind
+    }
+
+}

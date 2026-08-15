@@ -1,0 +1,6 @@
+let InfinityFinite = TypeScriptExpanded.isFinite(TypeScriptExpanded.negativeInfinity())
+let unknownVariable = TypeScriptExpanded.createUnknown()
+console.log(TypeScriptExpanded.unknownIsEmpty(unknownVariable))
+TypeScriptExpanded.setUnknownString(unknownVariable, "Hi")
+console.log(TypeScriptExpanded.getUnknownString(unknownVariable))
+TypeScriptExpanded.nullish(null, null)
