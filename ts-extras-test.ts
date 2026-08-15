@@ -40,7 +40,7 @@ namespace TypeScriptExpanded {
      * @example
      * let value = TypeScriptExpanded.nonNull(myValue)
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedNonNull
     //% block="non-null %value"
@@ -59,7 +59,7 @@ namespace TypeScriptExpanded {
      * @example
      * let name = TypeScriptExpanded.nullish(playerName, "Unknown")
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedNullish
     //% block="%value ?? %fallback"
@@ -80,7 +80,7 @@ namespace TypeScriptExpanded {
      * @param value The value to check.
      * @returns True if the value is null or undefined; otherwise, false.
      *
-     * @since 0.2
+     * @since 0.0.2
      */
     //% blockId=typeScriptExpandedisNullish
     //% block="is null or undefined %value"
@@ -95,7 +95,7 @@ namespace TypeScriptExpanded {
      * @param property The property name to access.
      * @returns The value of the property, or undefined if the object is null or undefined.
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedOptionalProperty
     //% block="optional property %property of %object"
@@ -121,7 +121,7 @@ namespace TypeScriptExpanded {
      * @param value The value to check.
      * @returns True if the value is a sprite; otherwise false
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see isArray
      */
@@ -137,7 +137,7 @@ namespace TypeScriptExpanded {
      * @param value The value to check.
      * @returns True if the value is an array; false otherwise
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see isSprite
      */
@@ -147,7 +147,49 @@ namespace TypeScriptExpanded {
     export function isArray(value: any): boolean {
         return Array.isArray(value)
     }
+    /**
+     * Checks whether a value is a string.
+     *
+     * @param value The value to check.
+     * @returns True if the value is a string; otherwise, false.
+     *
+     * @since 0.0.2
+     */
+    //% blockId=typeScriptExpandedIsString
+    //% block="%value is a string"
+    //% group="Type Checks"
+    export function isString(value: any): boolean {
+        return typeof value === "string"
+    }
 
+    /**
+    * Checks whether a value is a number.
+    *
+    * @param value The value to check.
+    * @returns True if the value is a number; otherwise, false.
+    *
+    * @since 0.0.2
+    */
+    //% blockId=typeScriptExpandedIsNumber
+    //% block="%value is a number"
+    //% group="Type Checks"
+    export function isNumber(value: any): boolean {
+        return typeof value === "number"
+    }
+    /**
+     * Checks whether a value is a boolean.
+     *
+     * @param value The value to check.
+     * @returns True if the value is a boolean; otherwise, false.
+     *
+     * @since 0.0.2
+     */
+    //% blockId=typeScriptExpandedIsBoolean
+    //% block="%value is a boolean"
+    //% group="Type Checks"
+    export function isBoolean(value: any): boolean {
+        return typeof value === "boolean"
+    }
 
     /**
      * Checks whether an array contains a value.
@@ -157,7 +199,7 @@ namespace TypeScriptExpanded {
      * @param value The value to look for.
      * @returns True if the array contains the value.
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedArrayIncludes
     //% block="%array includes %value"
@@ -169,6 +211,22 @@ namespace TypeScriptExpanded {
         return array.indexOf(value) !== -1
     }
 
+    /**
+     * Gets the index of a value in an array.
+     *
+     * @typeParam T The type of the array elements.
+     * @param array The array to search.
+     * @param value The value to find.
+     * @returns The index of the value, or -1 if it is not found.
+     *
+     * @since 0.2
+     */
+    //% blockId=typeScriptExpandedArrayIndexOf
+    //% block="index of %value in %array"
+    //% group="Arrays"
+    export function arrayIndexOf<T>(array: T[], value: T): number {
+        return array.indexOf(value)
+    }
 
     /**
      * Checks whether a string starts with the specified text.
@@ -176,7 +234,7 @@ namespace TypeScriptExpanded {
      * @param search The text to look for at the beginning.
      * @returns True if the string starts with the other string; otherwise false
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see stringEndsWith
      * @see stringIncludes
@@ -197,7 +255,7 @@ namespace TypeScriptExpanded {
      * @param search The text to look for at the end.
      * @returns True if the string ends with other string; otherwise false
      * 
-     * @since 0.1
+     * @since 0.0.1
      * @see stringStartsWith
      * @see stringIncludes
      */
@@ -229,7 +287,7 @@ namespace TypeScriptExpanded {
      * @param search The text to look for.
      * @returns True if the string includes other string; otherwise false
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see stringStartsWith
      * @see stringEndsWith
@@ -250,7 +308,7 @@ namespace TypeScriptExpanded {
      * @param value The value to convert.
      * @returns returns the value as a string
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedString
     //% block="String(%value)"
@@ -264,7 +322,7 @@ namespace TypeScriptExpanded {
      * @param value The value to convert.
      * @returns returns the boolean value of the value inputted
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedBoolean
     //% block="Boolean(%value)"
@@ -279,7 +337,7 @@ namespace TypeScriptExpanded {
      * @param value The number to check.
      * @returns True if the number is finite; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see negativeInfinity
      * @see positiveInfinity
@@ -295,7 +353,7 @@ namespace TypeScriptExpanded {
      * Represents an infinite value.
      * @returns The positive infinity value.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see negativeInfinity
      * @see isFinite
@@ -311,7 +369,7 @@ namespace TypeScriptExpanded {
      * Represents a negative infinite value.
      * @returns The negative infinity value.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see positiveInfinity
      * @see isFinite
@@ -329,7 +387,7 @@ namespace TypeScriptExpanded {
      * @param value The number to check.
      * @returns True if the value is an integer; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * @see isFloat
      */
     //% blockId=typeScriptExpandedIsInteger
@@ -344,7 +402,7 @@ namespace TypeScriptExpanded {
      * @param value The number to check.
      * @returns True if the number has a fractional part; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * @see isInteger
      */
     //% blockId=typeScriptExpandedIsFloat
@@ -361,7 +419,7 @@ namespace TypeScriptExpanded {
      * @param count The number of times to repeat the string.
      * @returns A new string containing the repeated text.
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedStringRepeat
     //% block="%text repeat %count times"
@@ -386,7 +444,7 @@ namespace TypeScriptExpanded {
      * @param padding The text to use as padding.
      * @returns the string and the padding
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedStringPadStart
     //% block="%text pad start to %length with %padding"
@@ -416,7 +474,7 @@ namespace TypeScriptExpanded {
      * @param padding The text to use as padding.
      * @returns the string and the padding
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedStringPadEnd
     //% block="%text pad end to %length with %padding"
@@ -444,7 +502,7 @@ namespace TypeScriptExpanded {
      * @param text The string to trim.
      * @returns the string without the whitespace at the beginning
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedStringTrimStart
     //% block="trim start of %text"
@@ -464,7 +522,7 @@ namespace TypeScriptExpanded {
      * @param text The string to trim.
      * @returns the string without the whitespace at the end
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedStringTrimEnd
     //% block="trim end of %text"
@@ -483,7 +541,7 @@ namespace TypeScriptExpanded {
      * Create a unknown value 
      * @returns A new value with no assigned type
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedcreateUnknown
     //% block="create unknown value"
@@ -496,7 +554,7 @@ namespace TypeScriptExpanded {
      * @param value the unknown value to set 
      * @param number the number to set the value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see getunknownNumber
      */
@@ -515,7 +573,7 @@ namespace TypeScriptExpanded {
      * @param value the unknown value to set
      * @param string the string to set the value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see getunknownString
      */
@@ -534,7 +592,7 @@ namespace TypeScriptExpanded {
      * @param value the unknown value to set
      * @param boolean the boolean to set the value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * @see getunknownBoolean
      */
     //% blockId=typeScriptExpandedsetUnknownBoolean
@@ -551,7 +609,7 @@ namespace TypeScriptExpanded {
      * clear an unknown value
      * @param value the unknown value to clear
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedclearUnknown
     //% block="clear unknown %value"
@@ -564,7 +622,7 @@ namespace TypeScriptExpanded {
      * @param value the value to check 
      * @returns True if the unknown value is a number; otherwise false
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see unknownIsString
      * @see unknownIsBoolean
@@ -581,7 +639,7 @@ namespace TypeScriptExpanded {
      * @param value the value to check 
      * @returns True if the value is a string; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see unknownIsNumber 
      * @see unknownIsBoolean
@@ -598,7 +656,7 @@ namespace TypeScriptExpanded {
      * @param value the value to check
      * @returns True if the value is a boolean; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see unknownIsNumber
      * @see unknownIsString
@@ -615,7 +673,7 @@ namespace TypeScriptExpanded {
      * @param value the value to check
      * @returns True if the value is a empty; otherwise, false.
      * 
-     * @since 0.1
+     * @since 0.0.1
      * @see unknownIsNumber
      * @see unknownIsString
      * @see unknownIsBoolean
@@ -631,7 +689,7 @@ namespace TypeScriptExpanded {
      * @param value the value to get
      * @returns returns the unknown variable's number value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see setUnknownNumber
      */
@@ -646,7 +704,7 @@ namespace TypeScriptExpanded {
      * @param value the value to get
      * @returns returns the unknown variable's string value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see setUnknownString
      */
@@ -661,7 +719,7 @@ namespace TypeScriptExpanded {
      * @param value the value to get
      * @returns returns the unknown variable's boolean value
      * 
-     * @since 0.1
+     * @since 0.0.1
      * 
      * @see setUnknownBoolean
      */
@@ -676,13 +734,35 @@ namespace TypeScriptExpanded {
      * @param value the value to check
      * @returns returns the unknown variable's type
      * 
-     * @since 0.1
+     * @since 0.0.1
      */
     //% blockId=typeScriptExpandedunknownType
     //% block="unknown type of %value"
     //% group="Unknown → Info"
     export function unknownType(value: UnknownValue): UnknownKind {
         return value.kind
+    }
+
+    /**
+     * Creates a copy of an unknown value.
+     *
+     * @param value The unknown value to copy.
+     * @returns A new unknown value containing the same type and value.
+     *
+     * @since 0.0.1
+     */
+    //% blockId=typeScriptExpandedCopyUnknown
+    //% block="copy unknown %value"
+    //% group="Unknown → Other"
+    export function copyUnknown(value: UnknownValue): UnknownValue {
+        let result = new UnknownValue()
+
+        result.kind = value.kind
+        result.numberValue = value.numberValue
+        result.stringValue = value.stringValue
+        result.booleanValue = value.booleanValue
+
+        return result
     }
 
 }
