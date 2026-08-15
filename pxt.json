@@ -10,7 +10,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "optionalproperty.md",
+        "docs/optionalproperty.md",
         "LICENSE",
         "assets.json",
         "ts-extras-test.ts"
