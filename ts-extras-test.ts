@@ -103,6 +103,25 @@ namespace TypeScriptExpanded {
         return object[property]
     }
 
+    /**
+     * get the type of an object 
+     * 
+     * @param value the value to get the type of 
+     * 
+     * @returns returns the type of the value in a string 
+     * 
+     * @since 0.0.3
+     * 
+     * @example 
+     * let randomNumber: number = 0
+     * console.log(TypeScriptExpanded.typeof(randomNumber)) // number
+     */
+    //% blockId=typeScriptExpandedTypeOf
+    //% block="typeof %value"
+    //% group="TypeScript Operators"
+    export function typeOf(value: any): string {
+        return typeof value
+    }
 
     /**
      * Checks whether a value is a Sprite.
