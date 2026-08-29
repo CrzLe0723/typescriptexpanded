@@ -76,7 +76,32 @@ namespace TypeScriptExpanded {
 
         return value
     }
-    
+    /**
+ * Returns the given value if it is not null or undefined;
+ * otherwise returns the fallback value.
+ *
+ * This provides the same value-selection behavior as
+    * the JavaScript/TypeScript nullish assignment operator (??=).
+    *
+    * @param value The value to check.
+    * @param fallback The value to use if the value is null or undefined.
+    * @returns The original value or the fallback value.
+    *
+    * @since 0.0.4
+    */
+    //% blockId=typeScriptExpandedNullishAssign
+    //% block="%value ??= %fallback"
+    //% group="TypeScript Operators"
+    export function nullishAssign<T>(
+        value: T | null | undefined,
+        fallback: T
+    ): T {
+        if (value === null || value === undefined) {
+            return fallback
+        }
+
+        return value
+    }
     /**
      * Safely gets a property from an object.
      *
