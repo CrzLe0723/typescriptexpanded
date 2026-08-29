@@ -196,38 +196,19 @@ namespace TypeScriptExpanded {
 
         return delete object[property]
     }
+
     /**
-     * Checks whether a value is a Sprite.
-     * 
-     * @param value The value to check.
-     * @returns True if the value is a sprite; otherwise false
-     * 
-     * @since 0.0.1
-     * 
-     * @see isArray
-     * @see isBoolean
-     * @see isNumber
-     * @see NaN
-     * @see isString
-     */
-    //% blockId=typeScriptExpandedIsSprite
-    //% block="%value is a Sprite"
-    //% group="Type Checks"
-    export function isSprite(value: any): boolean {
-        return value instanceof Sprite
-    }
-    /**
-     * Checks whether two values are strictly equal.
-     *
-     * Uses JavaScript's === operator, meaning values must have the same
-     * type and value to be considered equal.
-     *
-     * @param a The first value.
-     * @param b The second value.
-     * @returns True if the values are strictly equal.
-     *
-     * @since 0.0.4
-     */
+    * Checks whether two values are strictly equal.
+    *
+    * Uses JavaScript's === operator, meaning values must have the same
+    * type and value to be considered equal.
+    *
+    * @param a The first value.
+    * @param b The second value.
+    * @returns True if the values are strictly equal.
+    *
+    * @since 0.0.4
+    */
     //% blockId=typeScriptExpandedStrictEqual
     //% block="%a === %b"
     //% group="TypeScript Operators"
@@ -251,6 +232,28 @@ namespace TypeScriptExpanded {
     export function strictNotEqual(a: any, b: any): boolean {
         return a !== b
     }
+
+    /**
+     * Checks whether a value is a Sprite.
+     * 
+     * @param value The value to check.
+     * @returns True if the value is a sprite; otherwise false
+     * 
+     * @since 0.0.1
+     * 
+     * @see isArray
+     * @see isBoolean
+     * @see isNumber
+     * @see isNaN
+     * @see isString
+     */
+    //% blockId=typeScriptExpandedIsSprite
+    //% block="%value is a Sprite"
+    //% group="Type Checks"
+    export function isSprite(value: any): boolean {
+        return value instanceof Sprite
+    }
+   
     /**
      * Checks whether a value is an array.
      * @param value The value to check.
@@ -414,6 +417,7 @@ namespace TypeScriptExpanded {
     export function isDefined(value: any): boolean {
         return value !== undefined
     }
+
 
     /**
      * Checks whether an array contains a value.
@@ -586,6 +590,22 @@ namespace TypeScriptExpanded {
     //% group="Conversions & Numbers"
     export function negativeInfinity(): number {
         return -Infinity
+    }
+
+    /**
+     * Represents a NaN (not a number) value
+     * @returns NaN
+     * 
+     * @since 0.0.4
+     * 
+     * @see infinity
+     * @see negativeInfinity
+     */
+    //% blockId=typeScriptExpandedNaN
+    //% block="NaN"
+    //% group="Conversions & Numbers"
+    export function nan(): number {
+        return NaN
     }
 
     /**
