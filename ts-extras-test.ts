@@ -514,6 +514,57 @@ namespace TypeScriptExpanded {
     }
 
     /**
+     * Checks whether a number is positive.
+     *
+     * @param value The number to check.
+     * @returns True if the number is greater than zero; otherwise, false.
+     *
+     * @since 0.0.3
+     *
+     * @see isNegative
+     * @see isZero
+     */
+    //% blockId=typeScriptExpandedIsPositive
+    //% block="%value is positive"
+    //% group="Conversions & Numbers"
+    export function isPositive(value: number): boolean {
+        return value > 0
+    }
+    /**
+     * Checks whether a number is negative.
+     *
+     * @param value The number to check.
+     * @returns True if the number is less than zero; otherwise, false.
+     *
+     * @since 0.0.3
+     *
+     * @see isPositive
+     * @see isZero
+    */
+    //% blockId=typeScriptExpandedIsNegative
+    //% block="%value is negative"
+    //% group="Conversions & Numbers"
+    export function isNegative(value: number): boolean {
+        return value < 0
+    }
+    /**
+     * Checks whether a number is zero.
+     *
+     * @param value The number to check.
+     * @returns True if the number is exactly zero; otherwise, false.
+     *
+     * @since 0.0.3
+     *
+     * @see isPositive
+     * @see isNegative
+     */
+    //% blockId=typeScriptExpandedIsZero
+    //% block="%value is zero"
+    //% group="Conversions & Numbers"
+    export function isZero(value: number): boolean {
+        return value === 0
+    }
+    /**
      * Repeats a string a specified number of times.
      *
      * @param text The string to repeat.
