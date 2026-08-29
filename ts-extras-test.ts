@@ -418,6 +418,46 @@ namespace TypeScriptExpanded {
         return value !== undefined
     }
 
+    /**
+     * Checks whether a value is a function.
+     *
+     * @param value The value to check.
+     * @returns True if the value is a function; otherwise, false.
+     *
+     * @since 0.0.4
+     *
+     * @see isObject
+     * @see typeOf
+     */
+    //% blockId=typeScriptExpandedIsFunction
+    //% block="%value is a function"
+    //% group="Type Checks"
+    export function isFunction(value: any): boolean {
+        return typeof value === "function"
+    }
+
+    /**
+     * Checks whether a value is an object.
+     *
+     * Returns false for null, arrays, and primitive values.
+     *
+     * @param value The value to check.
+     * @returns True if the value is a non-null object that is not an array; otherwise, false.
+     *
+     * @since 0.0.4
+     *
+     * @see isFunction
+     * @see isArray
+     * @see typeOf
+     */
+    //% blockId=typeScriptExpandedIsObject
+    //% block="%value is an object"
+    //% group="Type Checks"
+    export function isObject(value: any): boolean {
+        return value !== null &&
+            typeof value === "object" &&
+            !Array.isArray(value)
+    }
 
     /**
      * Checks whether an array contains a value.
