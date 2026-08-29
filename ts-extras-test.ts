@@ -87,7 +87,7 @@ namespace TypeScriptExpanded {
     * @param fallback The value to use if the value is null or undefined.
     * @returns The original value or the fallback value.
     *
-    * @since 0.0.4
+    * @since 0.0.3
     */
     //% blockId=typeScriptExpandedNullishAssign
     //% block="%value ??= %fallback"
@@ -155,7 +155,7 @@ namespace TypeScriptExpanded {
      * @param object The object to search.
      * @returns True if the property exists and is not undefined.
      *
-     * @since 0.0.4
+     * @since 0.0.3
      */
     //% blockId=typeScriptExpandedInOperator
     //% block="%property in %object"
@@ -179,7 +179,7 @@ namespace TypeScriptExpanded {
      * @param property The property to remove.
      * @returns True if the property was successfully removed.
      *
-     * @since 0.0.4
+     * @since 0.0.3
      */
     //% blockId=typeScriptExpandedDeleteProperty
     //% block="delete %property from %object"
@@ -207,7 +207,7 @@ namespace TypeScriptExpanded {
     * @param b The second value.
     * @returns True if the values are strictly equal.
     *
-    * @since 0.0.4
+    * @since 0.0.3
     */
     //% blockId=typeScriptExpandedStrictEqual
     //% block="%a === %b"
@@ -224,7 +224,7 @@ namespace TypeScriptExpanded {
      * @param b The second value.
      * @returns True if the values are not strictly equal.
      *
-     * @since 0.0.4
+     * @since 0.0.3
      */
     //% blockId=typeScriptExpandedStrictNotEqual
     //% block="%a !== %b"
@@ -424,7 +424,7 @@ namespace TypeScriptExpanded {
      * @param value The value to check.
      * @returns True if the value is a function; otherwise, false.
      *
-     * @since 0.0.4
+     * @since 0.0.3
      *
      * @see isObject
      * @see typeOf
@@ -444,7 +444,7 @@ namespace TypeScriptExpanded {
      * @param value The value to check.
      * @returns True if the value is a non-null object that is not an array; otherwise, false.
      *
-     * @since 0.0.4
+     * @since 0.0.3
      *
      * @see isFunction
      * @see isArray
@@ -636,7 +636,7 @@ namespace TypeScriptExpanded {
      * Represents a NaN (not a number) value
      * @returns NaN
      * 
-     * @since 0.0.4
+     * @since 0.0.3
      * 
      * @see infinity
      * @see negativeInfinity
