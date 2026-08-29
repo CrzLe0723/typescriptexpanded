@@ -3,7 +3,7 @@
  * including language features, type checks, string operations, conversions,
  * and other functionality not normally available in Blocks. It also provides
  * additional APIs that make JavaScript and TypeScript development easier.
- * @version 0.0.2
+ * @version 0.0.3
  */
 //% weight=100 color=#3178C6 icon=""
 namespace TypeScriptExpanded {
@@ -76,34 +76,7 @@ namespace TypeScriptExpanded {
 
         return value
     }
-    /**
-     * Checks whether a value is null or undefined.
-     *
-     * @param value The value to check.
-     * @returns True if the value is null or undefined; otherwise, false.
-     *
-     * @since 0.0.2
-     */
-    //% blockId=typeScriptExpandedisNullish
-    //% block="is null or undefined %value"
-    //% group="TypeScript Operators"
-    export function isNullish(value: any): boolean {
-        return value === null || value === undefined
-    }
-    /**
-     * Checks whether a value is defined 
-     * 
-     * @param value The value to check.
-     * @returns True if the value is not undefined; otherwise, false.
-     * 
-     * @since 0.0.2
-     */
-    //% blockId=typeScriptExpandedisDefined
-    //% block="is defined %value"
-    //% group="TypeScript Operators"
-    export function isDefined(value: any): boolean {
-        return value !== undefined
-    }
+    
     /**
      * Safely gets a property from an object.
      *
@@ -250,6 +223,71 @@ namespace TypeScriptExpanded {
         return Number.isNaN(value)
     }
 
+    /**
+     * Checks whether a value is undefined.
+     *
+     * @param value The value to check.
+     * @returns True if the value is undefined; otherwise, false.
+     *
+     * @since 0.0.3
+     *
+     * @see isNull
+     * @see isNullish
+     * @see isDefined
+     */
+    //% blockId=typeScriptExpandedIsUndefined
+    //% block="%value is undefined"
+    //% group="Type Checks"
+    export function isUndefined(value: any): boolean {
+        return value === undefined
+    }
+
+    /**
+     * Checks whether a value is null.
+     *
+     * @param value The value to check.
+     * @returns True if the value is null; otherwise, false.
+     *
+     * @since 0.0.3
+     *
+     * @see isUndefined
+     * @see isNullish
+     */
+    //% blockId=typeScriptExpandedIsNull
+    //% block="%value is null"
+    //% group="Type Checks"
+    export function isNull(value: any): boolean {
+        return value === null
+    }
+
+    /**
+     * Checks whether a value is null or undefined.
+     *
+     * @param value The value to check.
+     * @returns True if the value is null or undefined; otherwise, false.
+     *
+     * @since 0.0.2
+    */
+    //% blockId=typeScriptExpandedisNullish
+    //% block="is null or undefined %value"
+    //% group="Type Checks"
+    export function isNullish(value: any): boolean {
+        return value === null || value === undefined
+    }
+    /**
+     * Checks whether a value is defined 
+     * 
+     * @param value The value to check.
+     * @returns True if the value is not undefined; otherwise, false.
+     * 
+     * @since 0.0.2
+     */
+    //% blockId=typeScriptExpandedisDefined
+    //% block="is defined %value"
+    //% group="Type Checks"
+    export function isDefined(value: any): boolean {
+        return value !== undefined
+    }
 
     /**
      * Checks whether an array contains a value.
