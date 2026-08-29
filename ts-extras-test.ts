@@ -124,6 +124,54 @@ namespace TypeScriptExpanded {
     }
 
     /**
+     * Checks whether an object contains a specified property.
+     *
+     * @param property The property name to check.
+     * @param object The object to search.
+     * @returns True if the property exists and is not undefined.
+     *
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpandedInOperator
+    //% block="%property in %object"
+    //% property.shadow="text"
+    //% property.defl=x
+    //% group="TypeScript Operators"
+    export function inOperator(
+        property: string,
+        object: any
+    ): boolean {
+        if (object === null || object === undefined) {
+            return false
+        }
+
+        return object[property] !== undefined
+    }
+    /**
+     * Removes a property from an object.
+     *
+     * @param object The object containing the property.
+     * @param property The property to remove.
+     * @returns True if the property was successfully removed.
+     *
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpandedDeleteProperty
+    //% block="delete %property from %object"
+    //% property.shadow="text"
+    //% property.defl=x
+    //% group="TypeScript Operators"
+    export function deleteProperty(
+        object: any,
+        property: string
+    ): boolean {
+        if (object === null || object === undefined) {
+            return false
+        }
+
+        return delete object[property]
+    }
+    /**
      * Checks whether a value is a Sprite.
      * 
      * @param value The value to check.
@@ -143,7 +191,41 @@ namespace TypeScriptExpanded {
     export function isSprite(value: any): boolean {
         return value instanceof Sprite
     }
-
+    /**
+     * Checks whether two values are strictly equal.
+     *
+     * Uses JavaScript's === operator, meaning values must have the same
+     * type and value to be considered equal.
+     *
+     * @param a The first value.
+     * @param b The second value.
+     * @returns True if the values are strictly equal.
+     *
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpandedStrictEqual
+    //% block="%a === %b"
+    //% group="TypeScript Operators"
+    export function strictEqual(a: any, b: any): boolean {
+        return a === b
+    }
+    /**
+     * Checks whether two values are not strictly equal.
+     *
+     * Uses JavaScript's !== operator.
+     *
+     * @param a The first value.
+     * @param b The second value.
+     * @returns True if the values are not strictly equal.
+     *
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpandedStrictNotEqual
+    //% block="%a !== %b"
+    //% group="TypeScript Operators"
+    export function strictNotEqual(a: any, b: any): boolean {
+        return a !== b
+    }
     /**
      * Checks whether a value is an array.
      * @param value The value to check.
