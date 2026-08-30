@@ -3,7 +3,7 @@
  * including language features, type checks, string operations, conversions,
  * and other functionality not normally available in Blocks. It also provides
  * additional APIs that make JavaScript and TypeScript development easier.
- * @version 0.0.3
+ * @version 0.0.4
  */
 //% weight=100 color=#3178C6 icon=""
 namespace TypeScriptExpanded {
