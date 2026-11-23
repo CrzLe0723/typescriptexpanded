@@ -14,7 +14,8 @@
         "docs/testdoc.md",
         "LICENSE",
         "assets.json",
-        "ts-extras-test.ts"
+        "ts-extras-test.ts",
+        "TypeScriptExpandedIcon.png"
     ],
     "testFiles": [
         "test.ts"
