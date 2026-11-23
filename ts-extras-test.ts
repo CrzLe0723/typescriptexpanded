@@ -8,6 +8,10 @@
 //% weight=100 color=#3178C6 icon=""
 namespace TypeScriptExpanded {
 
+    // Internal event registry mapping event names to action handlers
+    let eventHandlers: { [key: string]: (() => void)[] } = {};
+    let dataHandlers: { [key: string]: ((data: any) => void)[] } = {};
+
     export enum UnknownKind {
         Empty,
         Number,
@@ -77,17 +81,17 @@ namespace TypeScriptExpanded {
         return value
     }
     /**
- * Returns the given value if it is not null or undefined;
- * otherwise returns the fallback value.
- *
- * This provides the same value-selection behavior as
-    * the JavaScript/TypeScript nullish assignment operator (??=).
-    *
-    * @param value The value to check.
-    * @param fallback The value to use if the value is null or undefined.
-    * @returns The original value or the fallback value.
-    *
-    * @since 0.0.3
+     * Returns the given value if it is not null or undefined;
+     * otherwise returns the fallback value.
+     *
+     * This provides the same value-selection behavior as
+     * the JavaScript/TypeScript nullish assignment operator (??=).
+     *
+     * @param value The value to check.
+     * @param fallback The value to use if the value is null or undefined.
+     * @returns The original value or the fallback value.
+     *
+     * @since 0.0.3
     */
     //% blockId=typeScriptExpandedNullishAssign
     //% block="%value ??= %fallback"
@@ -183,8 +187,7 @@ namespace TypeScriptExpanded {
      */
     //% blockId=typeScriptExpandedDeleteProperty
     //% block="delete %property from %object"
-    //% property.shadow="text"
-    //% property.defl=x
+    //% property.shadow="text" property.defl=x
     //% group="TypeScript Operators"
     export function deleteProperty(
         object: any,
@@ -195,6 +198,78 @@ namespace TypeScriptExpanded {
         }
 
         return delete object[property]
+    }
+
+    /**
+     * Finds the first object in an array where a specific property matches the target value.
+     * 
+     * @param arr The array to search in 
+     * @param propertyName The property to search for 
+     * @param targetValue The value to match with 
+     * 
+     * @returns Any value 
+     * 
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpanded_array_find_prop
+    //% block="find object in %arr where property %propertyName equals %targetValue"
+    //% arr.shadow="lists_create_with"
+    //% propertyName.shadow="text" propertyName.defl="x"
+    //% group="TypeScript Operators"
+    export function findWithProperty(arr: any[], propertyName: string, targetValue: any): any {
+        if (!arr || !propertyName) return null;
+
+        for (let i = 0; i < arr.length; i++) {
+            let item = arr[i];
+            // Safe check if property exists
+            if (item && item[propertyName] === targetValue) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Finds an object in an array where a property matches a value directly, or within a nested config object.
+     * 
+     * @param arr The array to search in
+     * @param propertyName The property to match with a value
+     * @param targetValue The value to match with
+     *
+     * @returns Any value
+     *
+     * @since 0.0.4
+     */
+    //% blockId=typeScriptExpanded_array_find_flexible
+    //% block="find object in %arr where %propertyName matches %targetValue"
+    //% arr.shadow="lists_create_with"
+    //% propertyName.shadow="text" propertyName.defl="x"
+    //% group="TypeScript Operators"
+    export function findFlexible(arr: any[], propertyName: string, targetValue: any): any {
+        if (!arr || !propertyName) return null;
+
+        for (let i = 0; i < arr.length; i++) {
+            let item = arr[i];
+            if (!item) continue;
+
+            let propValue = item[propertyName];
+
+            // Direct Matching (strings and numbers)
+            if (propValue === targetValue) {
+                return item;
+            }
+
+            // Object Descriptors (substitutes mixed array matching safely for MakeCode)
+            if (typeof propValue === "object" && propValue !== null) {
+                let keys = Object.keys(propValue);
+                for (let j = 0; j < keys.length; j++) {
+                    if (propValue[keys[j]] === targetValue) {
+                        return item;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -215,6 +290,8 @@ namespace TypeScriptExpanded {
     export function strictEqual(a: any, b: any): boolean {
         return a === b
     }
+
+
     /**
      * Checks whether two values are not strictly equal.
      *
@@ -273,6 +350,8 @@ namespace TypeScriptExpanded {
     export function isArray(value: any): boolean {
         return Array.isArray(value)
     }
+
+
     /**
      * Checks whether a value is a string.
      *
@@ -313,6 +392,8 @@ namespace TypeScriptExpanded {
     export function isNumber(value: any): boolean {
         return typeof value === "number"
     }
+
+
     /**
      * Checks whether a value is a boolean.
      *
@@ -494,6 +575,115 @@ namespace TypeScriptExpanded {
     //% group="Arrays"
     export function arrayIndexOf<T>(array: T[], value: T): number {
         return array.indexOf(value)
+    }
+
+
+    /**
+     * Splits an array into chunks of a specified size.
+     * 
+     * @param any The array to split 
+     * @param size The size
+     * 
+     * @returns Any type of a 3d array
+     */
+    //% blockId=typeScriptExpanded_array_chunk
+    //% block="chunk array %arr by size %size"
+    //% size.defl=2
+    export function chunk(arr: any[], size: number): any[][] {
+        if (size <= 0 || !arr) return [];
+        let result: any[][] = [];
+        let currentChunk: any[] = [];
+
+        for (let i = 0; i < arr.length; i++) {
+            currentChunk.push(arr[i]);
+            if (currentChunk.length === size || i === arr.length - 1) {
+                result.push(currentChunk);
+                currentChunk = [];
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Zips two arrays together into pairs.
+     * 
+     * @param arr1 First array 
+     * @param arr2 Second Array 
+     * 
+     * @returns The zipped array (which is a 3d array)
+    */
+    //% blockId=typeScriptExpanded_array_zip
+    //% block="zip array %arr1 with array %arr2"
+    export function zip(arr1: any[], arr2: any[]): any[][] {
+        if (!arr1 || !arr2) return [];
+        let minLength = Math.min(arr1.length, arr2.length);
+        let result: any[][] = [];
+
+        for (let i = 0; i < minLength; i++) {
+            result.push([arr1[i], arr2[i]]);
+        }
+        return result;
+    }
+
+    /**
+     * Creates a deep copy of an object or array to break memory references.
+     * 
+     * @param obj The object or array to deep clone 
+     * 
+     * @returns Any value
+    */
+    //% blockId=typeScriptExpanded_obj_deepclone
+    //% block="deep clone object %obj"
+    export function deepClone(obj: any): any {
+        if (obj === null || typeof obj !== "object") {
+            return obj;
+        }
+
+        // Handle Array structures
+        if (Array.isArray(obj)) {
+            let arrCopy: any[] = [];
+            for (let i = 0; i < obj.length; i++) {
+                arrCopy.push(deepClone(obj[i]));
+            }
+            return arrCopy;
+        }
+
+        // Handle Object structures
+        let objCopy: any = {};
+        let keys = Object.keys(obj);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            objCopy[key] = deepClone(obj[key]);
+        }
+        return objCopy;
+    }
+
+    /**
+     * Deeply merges properties from a source object into a target object.
+     * 
+     * @param target The target object 
+     * @param source The source object 
+     * 
+     * @returns The object after being deeply merged
+    */
+    //% blockId=tsexpanded_obj_merge
+    //% block="merge source object %source into target %target"
+    export function merge(target: any, source: any): any {
+        if (!target) target = {};
+        if (!source) return target;
+
+        let keys = Object.keys(source);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+
+            if (source[key] && typeof source[key] === "object" && !Array.isArray(source[key])) {
+                if (!target[key]) target[key] = {};
+                merge(target[key], source[key]);
+            } else {
+                target[key] = source[key];
+            }
+        }
+        return target;
     }
 
     /**
@@ -874,6 +1064,96 @@ namespace TypeScriptExpanded {
 
         return text.substr(0, end)
     }
+
+
+
+    /**
+     * Returns the number of leading zero bits in the 32-bit binary representation of a number.
+    */
+    //% blockId=typeScriptExpanded_math_clz32
+    //% block="math clz32 %num"
+    export function clz32(num: number): number {
+        // Convert to 32-bit unsigned integer syntax
+        let n = num >>> 0;
+        if (n === 0) return 32;
+
+        let count = 0;
+        // Count leading zeros by checking bit shifts
+        if ((n & 0xFFFF0000) === 0) { count += 16; n <<= 16; }
+        if ((n & 0xFF000000) === 0) { count += 8; n <<= 8; }
+        if ((n & 0xF0000000) === 0) { count += 4; n <<= 4; }
+        if ((n & 0xC0000000) === 0) { count += 2; n <<= 2; }
+        if ((n & 0x80000000) === 0) { count += 1; }
+
+        return count;
+    }
+
+    /**
+     * Returns the nearest 32-bit single precision float representation of a number.
+     */
+    //% blockId=typeScriptExpanded_math_fround
+    //% block="math fround %num"
+    export function fround(num: number): number {
+        // In MakeCode's Static TypeScript, numbers on the hardware are handled 
+        // as single-precision floats or integers already. This forces explicit coercion.
+        return Math.floor(num * 1000000) / 1000000;
+    }
+
+    /**
+     * Registers a callback handler for a specific custom global event.
+    */
+    //% blockId=typeScriptExpanded_on_event
+    //% block="on event %eventName"
+    export function onEvent(eventName: string, handler: () => void) {
+        if (!eventHandlers[eventName]) {
+            eventHandlers[eventName] = [];
+        }
+        eventHandlers[eventName].push(handler);
+    }
+
+    /**
+     * Registers a callback handler that receives data for a custom event.
+     */
+    //% blockId=typeScriptExpanded_on_event_with_data
+    //% block="on event %eventName with data"
+    export function onEventWithData(eventName: string, handler: (data: any) => void) {
+        if (!dataHandlers[eventName]) {
+            dataHandlers[eventName] = [];
+        }
+        dataHandlers[eventName].push(handler);
+    }
+
+    /**
+     * Triggers all registered callback actions for an event.
+     */
+    //% blockId=typeScriptExpanded_emit
+    //% block="emit event %eventName"
+    export function emit(eventName: string) {
+        let handlers = eventHandlers[eventName];
+
+        if (handlers && handlers.length > 0) {
+            for (let i = 0; i < handlers.length; i++) {
+                handlers[i]();
+            }
+        }
+    }
+
+    /**
+     * Triggers all registered callback actions for an event and passes data along.
+     */
+    //% blockId=typeScriptExpanded_emit_with_data
+    //% block="emit event %eventName with data %data"
+    export function emitWithData(eventName: string, data: any) {
+        let handlers = dataHandlers[eventName];
+
+        if (handlers && handlers.length > 0) {
+            for (let i = 0; i < handlers.length; i++) {
+                handlers[i](data);
+            }
+        }
+    }
+
+    // Unknown Blocks
 
     /**
      * Create a unknown value 
